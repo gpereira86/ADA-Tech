@@ -1,9 +1,9 @@
 const path = require('node:path')
 const fs = require('node:fs')
-
 const dotenv = require('dotenv')
 dotenv.config()
 
+console.log(process.env.NODE_ENV)
 
 const filePath = path.join(process.cwd(), 'texto.txt')
 const fileOutPath = path.join(process.cwd(), 'texto-com-linhas.txt')
