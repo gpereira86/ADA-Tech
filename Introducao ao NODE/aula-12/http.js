@@ -1,8 +1,26 @@
 const http = require('node:http')
 
-const server = http.createServer((request, response)=>{
+const sports = ['soccer', 'volley', 'basketball', 'tennis']
+
+const server = http.createServer(async(request, response)=>{
     const {method, statusCode, url} = request
-    const sports = ['soccer', 'volley', 'basketball', 'tennis']
+    
+    request.headers.accept = '*'
+    request.headers.allow = '*'
+
+    const bodyPromisse = new Promise((resolve, reject) => {
+        let body
+        
+        request.on('data', data => {
+            body = JSON.parse(data)
+        })
+
+        request.on('end', data => {
+            resolve(body)
+        })
+    })
+
+    
 
     if (url === '/'){
         response.write("<div><h1>Hello from node</h1><p>http server</p><div>")
@@ -18,8 +36,21 @@ const server = http.createServer((request, response)=>{
         }
 
         if(method === 'POST') {
-            const bodyPromisse = new
+            const body = await bodyPromisse
+
+            const { name } = body
+
+            if (!sports.map(sport => sport.toLocaleLowerCase()).includes(name.toLocaleLowerCase())){
+                sports.push(name.toLocaleLowerCase())
+                console.log('enter')
+            }
+
+            response.write(name.toLocaleLowerCase())
+            response.end()
+            return
         }
+
+
     }
 
     response.statusCode = 404
