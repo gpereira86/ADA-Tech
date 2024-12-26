@@ -50,7 +50,6 @@ const server = http.createServer(async(request, response)=>{
             return
         }
 
-
     }
 
     response.statusCode = 404
