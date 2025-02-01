@@ -1,0 +1,5 @@
+37504786 - requerimento hora acc -  2h - git versionamento
+37504787 - requerimento hora acc -  5h - log. programação
+37504789 - requerimento hora acc -  4h - Introdução à plataforma Node.js
+37504791 - requerimento hora acc -  5h - POO node.js
+37504793 - requerimento hora acc - 15h - Santander Tech+ | Back-End 
